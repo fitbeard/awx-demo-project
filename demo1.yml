@@ -1,0 +1,6 @@
+---
+- name: Demo1 playbook
+  hosts: demo
+  become: true
+  roles:
+    - {role: demo_role1, tags: demo_role1}
