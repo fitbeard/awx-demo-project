@@ -1,0 +1,24 @@
+---
+- name: Create directories
+  file:
+    name: "{{ item.name }}"
+    mode: "{{ item.mode }}"
+    state: directory
+  with_items:
+    - {name: "/opt/demo", mode: "0755"}
+    - {name: "/opt/demo/{{ inventory_hostname }}", mode: "0755"}
+    - {name: "/opt/demo/{{ inventory_hostname }}/{{ ansible_fqdn }}", mode: "0755"}
+
+- name: Create additional directories
+  file:
+    name: "{{ item.name }}"
+    mode: "{{ item.mode }}"
+    state: directory
+  with_items:
+    - {name: "/opt/demo/{{ inventory_hostname }}/{{ ansible_fqdn }}/variable_trigger", mode: "0755"}
+  when: demo_var1 | bool
+
+- name: Remove directories
+  file:
+    path: /opt/demo/
+    state: absent
