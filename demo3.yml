@@ -1,0 +1,6 @@
+---
+- name: Demo3 playbook
+  hosts: local
+  become: true
+  roles:
+    - {role: demo_role2, tags: demo_role2}
