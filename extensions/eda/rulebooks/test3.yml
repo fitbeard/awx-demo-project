@@ -10,4 +10,7 @@
     - name: Check if endpoint is responding
       condition: event.url_check.status == "up"
       action:
-        debug:
+        run_module:
+          name: ansible.builtin.debug
+          module_args:
+            msg: SUCCESS
