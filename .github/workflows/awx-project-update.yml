@@ -1,0 +1,23 @@
+---
+name: awx-project-update
+
+on:
+  workflow_dispatch:
+    inputs:
+      project:
+        description: 'Set project name or id'
+        required: true
+        default: 'demo'
+
+jobs:
+  awx:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Update AWX project"
+        uses: fitbeard/action-trigger-awx@b9cb76581d13818d952ff95d7b4871b19b2acf43
+        with:
+          controller_host: ${{ secrets.CONTROLLER_HOST }}
+          controller_oauth_token: ${{ secrets.CONTROLLER_OAUTH_TOKEN }}
+          controller_verify_ssl: false
+          resource_type: project
+          resource_name: ${{ github.event.inputs.project }}
