@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Update AWX project"
-        uses: fitbeard/action-trigger-awx@4c570b1d1d94205545a028eee092725dba7924e9
+        uses: fitbeard/action-trigger-awx@07f735a6271508b296ddffbeaa64e67eac314bc8
         with:
           controller_host: ${{ secrets.CONTROLLER_HOST }}
           controller_oauth_token: ${{ secrets.CONTROLLER_OAUTH_TOKEN }}
