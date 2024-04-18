@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Update AWX project"
+        id: project_update
         uses: fitbeard/action-trigger-awx@07f735a6271508b296ddffbeaa64e67eac314bc8
         with:
           controller_host: ${{ secrets.CONTROLLER_HOST }}
@@ -21,3 +22,7 @@ jobs:
           controller_verify_ssl: false
           resource_type: project
           resource_name: ${{ github.event.inputs.project }}
+
+      - name: Generate image tag
+        run: |
+          echo ${{ steps.project_update.outputs.job_id }}
