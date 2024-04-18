@@ -23,6 +23,6 @@ jobs:
           resource_type: project
           resource_name: ${{ github.event.inputs.project }}
 
-      - name: Generate image tag
+      - name: Output AWX job id
         run: |
           echo ${{ steps.project_update.outputs.job_id }}
